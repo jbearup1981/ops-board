@@ -1,0 +1,235 @@
+<title>Nexus Ops Board</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap">
+<style>
+:root{
+  --bg:#F6F4EF; --surface:#FFFFFF; --ink:#22301F; --muted:#6E7D6E; --line:#E2DFD4;
+  --accent:#B8522A; --good:#2E6B44; --wait:#A8681C; --fire:#A83A1C;
+  --good-bg:#E7EFE7; --wait-bg:#F4EBDD; --fire-bg:#F6E4DD; --chip:#EFEDE5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#161C17; --surface:#1E2620; --ink:#E9E7DC; --muted:#95A295; --line:#2E382F;
+    --accent:#D9835B; --good:#79C393; --wait:#D9A85C; --fire:#E0755A;
+    --good-bg:#233326; --wait-bg:#332B1E; --fire-bg:#38251E; --chip:#28312A;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161C17; --surface:#1E2620; --ink:#E9E7DC; --muted:#95A295; --line:#2E382F;
+  --accent:#D9835B; --good:#79C393; --wait:#D9A85C; --fire:#E0755A;
+  --good-bg:#233326; --wait-bg:#332B1E; --fire-bg:#38251E; --chip:#28312A;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"DM Sans",-apple-system,"Segoe UI",sans-serif;
+  margin:0;padding:28px 18px 64px;line-height:1.45;font-size:15px}
+.wrap{max-width:860px;margin:0 auto}
+header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px;
+  border-bottom:2px solid var(--accent);padding-bottom:14px;margin-bottom:8px}
+h1{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:30px;margin:0}
+.stamp{color:var(--muted);font-size:13px}
+section{margin-top:26px}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);
+  font-weight:700;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.row{display:flex;gap:11px;align-items:flex-start;padding:11px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row input[type=checkbox]{flex:none;width:17px;height:17px;margin:3px 0 0;accent-color:var(--good);cursor:pointer}
+.row .what{flex:1;min-width:0}
+.row .what small{display:block;color:var(--muted);margin-top:1px}
+.row:has(input:checked) .what{text-decoration:line-through;color:var(--muted)}
+.row:has(input:checked) .pill{opacity:.45}
+.pill{flex:none;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 9px;border-radius:99px;margin-top:2px;white-space:nowrap}
+.p-fire{background:var(--fire-bg);color:var(--fire)}
+.p-wait{background:var(--wait-bg);color:var(--wait)}
+.p-good{background:var(--good-bg);color:var(--good)}
+.p-you{background:var(--chip);color:var(--ink)}
+.time{flex:none;width:78px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px;padding-top:3px}
+.who{flex:none;width:112px;font-weight:500;font-size:13.5px;padding-top:3px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--chip);border:1px solid var(--line);border-radius:99px;padding:5px 13px;font-size:13.5px}
+.chips b{color:var(--accent)}
+.wins{columns:2;column-gap:28px;margin:0;padding:0 0 0 2px;list-style:none;font-size:13.5px;color:var(--muted)}
+.wins li{break-inside:avoid;padding:3px 0 3px 20px;position:relative}
+.wins li::before{content:"✓";position:absolute;left:0;color:var(--good);font-weight:700}
+.addbar{display:flex;gap:8px;margin-top:10px}
+.addbar input{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:9px 12px;font:inherit;color:var(--ink)}
+.addbar button{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:9px 16px;
+  font:inherit;font-weight:700;cursor:pointer}
+.addbar button:focus-visible,.addbar input:focus-visible,.row input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hint{color:var(--muted);font-size:12.5px;margin-top:8px}
+footer{margin-top:34px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:12px;line-height:1.6}
+@media(max-width:560px){.wins{columns:1}.who{width:88px}.time{width:60px}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Nexus Ops Board</h1>
+  <div class="stamp">Refreshed Sat Aug 22, 2026 · 12:30 PM · by Claude</div>
+</header>
+
+<section>
+<h2>Send queue — check off when sent</h2>
+<div class="card">
+  <div class="row"><input type="checkbox" aria-label="done"><div class="what">Jason Balk — MetLife nonpayment, cancels RETRO to 7/1 <small>Grp 6558992 past due since ~June · likely the Insight-transition billing casualty · cure paths + offer to call MetLife Monday</small></div><span class="pill p-fire">fire</span></div>
+  <div class="row"><input type="checkbox" aria-label="done"><div class="what">Kim Wiseley — Justin Mitchell scope corrected <small>He WAIVES PH · adds = LTD + Group Life only · includes the Kim-not-Kevin apology</small></div><span class="pill p-good">new</span></div>
+  <div class="row"><input type="checkbox" aria-label="done"><div class="what">Ken — answer on DU + GR Motorcar <small>Nothing needed from him · GR Motorcar in motion · Davenport = Monday's decision</small></div><span class="pill p-good">new</span></div>
+</div>
+</section>
+
+<section>
+<h2>Still open — anytime</h2>
+<div class="card">
+  <div class="row"><input type="checkbox" aria-label="done"><div class="what">Penny — check-in text <small>Claims escalation in motion · nothing else owed her</small></div><span class="pill p-you">you</span></div>
+  <div class="row"><input type="checkbox" aria-label="done"><div class="what">Saturday: agreement packet build — awaiting your ruling on clauses 1–4 <small>Then Exhibit A update → render 5 signature packets → staged sends</small></div><span class="pill p-good">today</span></div>
+  <div class="row"><input type="checkbox" aria-label="done"><div class="what">Saturday: find RFC Form 100 in the CRM quoting system <small>Jason knows where it lives · needed for GR Motorcar + Permaloc submissions</small></div><span class="pill p-you">today</span></div>
+</div>
+</section>
+
+<section>
+<h2>Monday — slid from Friday (afternoon off)</h2>
+<div class="card">
+  <div class="row"><div class="time">10:00</div><input type="checkbox" aria-label="done"><div class="what">Principal login (30 sec) → Claude runs Creston terminations <small>Hannah Barrett 7/28 + Todd Bowlin 6/18 · then confirmation to Kim</small></div><span class="pill p-you">login</span></div>
+  <div class="row"><div class="time">10:00</div><input type="checkbox" aria-label="done"><div class="what">PH Agent Center login (30 sec) → Claude reads 3 Secure Mail msgs</div><span class="pill p-you">login</span></div>
+  <div class="row"><div class="time">10:15</div><input type="checkbox" aria-label="done"><div class="what">Drew VanDyk — join the PH call? <small>One-line yes/no</small></div><span class="pill p-you">reply</span></div>
+  <div class="row"><div class="time">10:20</div><input type="checkbox" aria-label="done"><div class="what">SBS Law $682.50 — invoice #3301</div><span class="pill p-you">pay</span></div>
+  <div class="row"><div class="time">10:25</div><input type="checkbox" aria-label="done"><div class="what">Reimburse Ken $200 — golf expense <small>Thousand Oaks, ~8/7, with Craig Langbo (Perceptive) · $400 total (~$100/player × 4), Jason covers half</small></div><span class="pill p-you">pay</span></div>
+  <div class="row"><div class="time">10:30</div><input type="checkbox" aria-label="done"><div class="what">Joel Zuidema — give Claude the marketplace access path <small>Cancellation eff 8/10 + subsidy pull follow</small></div><span class="pill p-you">answer</span></div>
+  <div class="row"><div class="time">11:00</div><input type="checkbox" aria-label="done"><div class="what">Call Sadie <small>Forms · Integrity path for GR Motorcar + Permaloc · does our agreement satisfy Benchmark</small></div><span class="pill p-you">call</span></div>
+  <div class="row"><div class="time">1:00</div><input type="checkbox" aria-label="done"><div class="what">Planning Block <small>Comp rebuild (w/ Amanda) · Jacob + Ellen onboarding · AM decision · Brenda TEMPORARY referral/comp agreement (Piggott + Lodholtz; long-term TBD) · Davenport → Integrity · update Cam's Exhibit A</small></div><span class="pill p-you">think</span></div>
+  <div class="row"><div class="time">1:30</div><input type="checkbox" aria-label="done"><div class="what">Agreement rollout — final review, then send the stack for signature <small>To Cam, Tom, Ken, Brenda + Courtney · signed copies back to Rob by early next week · ✓ Benchmark comparison memo DONE (nexbench-hris folder): 5 clauses worth adding, zero conflicts with advisors-own-their-books, ours stronger overall — read before the review</small></div><span class="pill p-you">review</span></div>
+  <div class="row"><div class="time">—</div><input type="checkbox" aria-label="done"><div class="what">Submit Request for Coverage — GR Motorcar + Permaloc <small>First live run of the new process · your commission forms follow · target 9/4 payroll (CEHAS confirmed path today)</small></div><span class="pill p-you">submit</span></div>
+  <div class="row"><div class="time">—</div><input type="checkbox" aria-label="done"><div class="what">Integrity Equipment newborn — BCBSM group support request <small>Jeanelle answered today: submit under the MEMBERSHIP category (their area doesn't handle changes)</small></div><span class="pill p-you">submit</span></div>
+  <div class="row"><div class="time">—</div><input type="checkbox" aria-label="done"><div class="what">Talent outreach — Tristan (realtor) + Mike (Best Buy mgr) <small>Great sales presence, future sales guys · give Claude their contact info and intro notes get drafted</small></div><span class="pill p-you">connect</span></div>
+  <div class="row"><div class="time">—</div><input type="checkbox" aria-label="done"><div class="what">Amanda's "Date Night Surprise" — Fri 8/28, 7:30 PM <small>Personal invite sitting in the inbox · accept it yourself</small></div><span class="pill p-you">rsvp</span></div>
+  <div class="row"><div class="time">—</div><input type="checkbox" aria-label="done"><div class="what">AUDIT: Perceptive billing report-back <small>Vision/dental billing errors handed off Thu · Claude chases status + reports, incl. the unsent Robert Edwards coverage draft</small></div><span class="pill p-wait">claude</span></div>
+  <div class="row"><div class="time">—</div><input type="checkbox" aria-label="done"><div class="what">AUDIT: MarJo invoice reconciliation — promised Julie by 8/15 <small>A week past · Claude checks the Marjo chat's status and reports</small></div><span class="pill p-wait">claude</span></div>
+  <div class="row"><div class="time">—</div><input type="checkbox" aria-label="done"><div class="what">AUDIT: UHC IFP compliance module — was due 7/24 <small>Contract-termination threat on file · blocked on your Jarvis login · 60 seconds to confirm status</small></div><span class="pill p-you">check</span></div>
+  <div class="row"><div class="time">—</div><input type="checkbox" aria-label="done"><div class="what">AUDIT: Cornerstone deal closes 8/31 — payroll-intro email still unsent <small>Chat quiet since 8/6 · send it or move the close date</small></div><span class="pill p-you">decide</span></div>
+  <div class="row"><div class="time">—</div><input type="checkbox" aria-label="done"><div class="what">Marketplace access path → Joel cancellation (eff 8/10) + Andrea's newborn add <small>Both blocked on the same answer since 8/17</small></div><span class="pill p-you">answer</span></div>
+</div>
+</section>
+
+<section>
+<h2>Decisions pending</h2>
+<div class="card">
+  <div class="row"><input type="checkbox" aria-label="decided"><div class="what">Mary Sanglap — $699/mo VA proposal</div><span class="pill p-you">decide</span></div>
+  <div class="row"><input type="checkbox" aria-label="decided"><div class="what">Taylor Bracken lunch draft — names Tom <small>Rewrite / keep / drop</small></div><span class="pill p-you">decide</span></div>
+  <div class="row"><input type="checkbox" aria-label="decided"><div class="what">Tom declined the 8/28 Sales Call <small>Conflict, or fine without him?</small></div><span class="pill p-you">decide</span></div>
+</div>
+</section>
+
+<section>
+<h2>Jason's adds — anything on your mind</h2>
+<div class="card" id="jason-adds">
+  <div class="row"><input type="checkbox" aria-label="done"><div class="what"><i>Nothing here yet — add below and Claude picks it up next session.</i></div></div>
+</div>
+<artifact-local>
+<div class="addbar">
+  <input id="new-item" placeholder="Type a task, hit Add — it saves to the board" aria-label="New task">
+  <button id="add-btn">Add</button>
+</div>
+</artifact-local>
+<div class="hint">Anything you add or check off here is saved instantly and visible to Claude on its next pass.</div>
+</section>
+
+<section>
+<h2>Deep-work chats — who owns what</h2>
+<div class="card">
+  <div class="row"><div class="who">Email Ops</div><div class="what">THIS board's quarterback <small>Triage, tracking, handoffs, board refresh — every other chat reports status changes here</small></div><span class="pill p-good">hub</span></div>
+  <div class="row"><div class="who">Broker Comp</div><div class="what">Agreements + comp structure <small>Advisor agreement stack, Exhibit A rates, Cam's portal bug</small></div><span class="pill p-you">active</span></div>
+  <div class="row"><div class="who">CRM Updates</div><div class="what">NexHub pipelines build <small>Renewal + new-business pipelines, due ~8/27</small></div><span class="pill p-you">active</span></div>
+  <div class="row"><div class="who">Perceptive</div><div class="what">Craig/Ashley · billing sync issues · Justin Mitchell PH verification</div><span class="pill p-you">active</span></div>
+  <div class="row"><div class="who">Augusta</div><div class="what">OE wrap · Unum vision manual submissions · new hire Jared</div><span class="pill p-you">active</span></div>
+  <div class="row"><div class="who">OneWay/Sana</div><div class="what">Member claims escalation · check-in watch</div><span class="pill p-you">active</span></div>
+  <div class="row"><div class="who">Adtegrity</div><div class="what">MetLife nonpayment fire · COBRA move to Insight</div><span class="pill p-fire">stalled</span></div>
+  <div class="row"><div class="who">Marjo</div><div class="what">Julie invoice reconciliation · Medicare meeting w/ Drew</div><span class="pill p-you">active</span></div>
+  <div class="row"><div class="who">Highstreet</div><div class="what">Legal case · NEW: Discovery Requests in, Todd meeting next week</div><span class="pill p-you">active</span></div>
+  <div class="row"><div class="who">Commissions</div><div class="what">Monthly close process (2-finance)</div><span class="pill p-you">active</span></div>
+</div>
+</section>
+
+<section>
+<h2>Waiting on others — no action, just watching</h2>
+<div class="card">
+  <div class="row"><div class="who">Julie / MarJo</div><div class="what">Medicare-meeting time pick <small>Mon or Wed offered · agenda ready</small></div><span class="pill p-wait">waiting</span></div>
+  <div class="row"><div class="who">Penny</div><div class="what">Her check-in → then restart the claims follow-through</div><span class="pill p-wait">waiting</span></div>
+  <div class="row"><div class="who">CRM chat</div><div class="what">Renewal pipeline + new business pipeline build <small>Spec handed off tonight · target ~8/27 · sold-stage change kicks off the paperwork</small></div><span class="pill p-wait">building</span></div>
+</div>
+</section>
+
+<section>
+<h2>Parked on purpose</h2>
+<div class="chips">
+  <span>Sedera ACH — next payout cycle</span>
+  <span>KC Life VOE — Fiber Link</span>
+  <span>United Pet Care — vendor intro</span>
+</div>
+</section>
+
+<section>
+<h2>Closed this week</h2>
+<ul class="wins">
+  <li>Justin Mitchell scope corrected — waives PH, LTD + life only (Kim)</li>
+  <li>Friday send pass — ALL 8 out: team process, Sadie, Rob+agreement PDF, Bryce/Unum, Andrea, Wiseley, Cam, Olivia/SBS</li>
+  <li>Auto Lock — PH application SUBMITTED for 9/1 (Link Benefits confirmed)</li>
+  <li>Aflac BOR / Augusta — JMB confirmed as Broker of Record (acct L1R89)</li>
+  <li>biBerk $3M endorsement docs — received</li>
+  <li>Integrity submission process — locked with Rob, documented, form built</li>
+  <li>Cam's commission forms — signed &amp; at CEHAS since Wed (copies in hand)</li>
+  <li>GR Motorcar + Permaloc path — CEHAS confirmed: new ASA/CPC, move on a payroll date</li>
+  <li>Penny pre-surgery — Sana called, receipts escalated</li>
+  <li>David Leonard — enrolled, member ID delivered</li>
+  <li>Auto Lock — signed, census in, 8/25 beat</li>
+  <li>Daniel Rupert — all 6 lines verified approved</li>
+  <li>Davenport age-70 templates + $34.99 correction</li>
+  <li>GR Motorcar + Permaloc → Integrity decided</li>
+  <li>biBerk $3M bound at the cheaper $408</li>
+  <li>Craig — the right reply, finally sent</li>
+  <li>Gerke — booked himself, Tue 8/25</li>
+  <li>Great Lakes Label renewal — Cam had it</li>
+  <li>Brenda comp agreement — confirmed in writing</li>
+  <li>Kelsey's age-70 answer — Leslie updated</li>
+  <li>Worklab — paid</li>
+  <li>MMA event — declined, on the list for next time</li>
+</ul>
+</section>
+
+<footer>
+<b>How this board works:</b> Claude refreshes it every working session (same link, always). Checkboxes and anything you add save instantly — as you — and Claude reads them on its next pass: checked items get moved to Closed, your adds get worked or scheduled. Calendar blocks own <i>when</i>; this board owns <i>status</i>.
+</footer>
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('add-btn');
+  var input = document.getElementById('new-item');
+  if(!btn || !input) return;
+  function addItem(){
+    var text = (input.value || '').trim();
+    if(!text) return;
+    var container = document.getElementById('jason-adds');
+    var placeholder = container.querySelector('.what i');
+    if(placeholder) placeholder.closest('.row').remove();
+    var row = document.createElement('div');
+    row.className = 'row';
+    var cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.setAttribute('aria-label','done');
+    var what = document.createElement('div');
+    what.className = 'what';
+    what.textContent = text;
+    var small = document.createElement('small');
+    small.textContent = 'Added by Jason · ' + new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    what.appendChild(small);
+    var pill = document.createElement('span');
+    pill.className = 'pill p-you'; pill.textContent = 'new';
+    row.appendChild(cb); row.appendChild(what); row.appendChild(pill);
+    container.appendChild(row);
+    input.value = '';
+  }
+  btn.addEventListener('click', addItem);
+  input.addEventListener('keydown', function(e){ if(e.key === 'Enter') addItem(); });
+})();
+</script>
