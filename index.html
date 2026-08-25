@@ -1,6 +1,6 @@
 <title>Nexus Ops Board</title>
 <meta name="robots" content="noindex, nofollow">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Caveat:wght@400;600;700&display=swap">
 <style>
 :root{
   --bg:#F6F4EF; --surface:#FFFFFF; --ink:#22301F; --muted:#6E7D6E; --line:#E2DFD4;
@@ -49,6 +49,28 @@ header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap
 #theme-toggle:hover{color:var(--ink)}
 #theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
+/* ---------- week at a glance (planner) ---------- */
+.week-glance{margin-bottom:clamp(18px,1.6vw,28px)}
+.week-scroll{overflow-x:auto;padding-bottom:4px}
+.week-strip{display:grid;grid-template-columns:repeat(7,minmax(148px,1fr));gap:10px;min-width:1060px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:10px 12px 12px;box-shadow:var(--shadow);position:relative}
+.day.today{border-color:var(--accent);border-width:2px;padding:9px 11px 11px}
+.day.today::after{content:"TODAY";position:absolute;top:8px;right:10px;font-size:.6em;font-weight:700;letter-spacing:.1em;color:var(--accent)}
+.day.past{background:color-mix(in srgb, var(--surface) 88%, var(--bg))}
+.day h3{margin:0 0 6px;font-size:.72em;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);font-weight:700}
+.day h3 b{color:var(--ink);font-size:1.15em;letter-spacing:.02em}
+.hand{font-family:"Caveat","Bradley Hand",cursive;font-size:1.22em;line-height:1.32;color:var(--ink)}
+.hand div{padding:1px 0}
+.hand .did{color:var(--muted)}
+.hand .did::before{content:"✓ ";color:var(--good);font-weight:700}
+.hand .plan::before{content:"• ";color:var(--accent)}
+.hand .hot-note{color:var(--fire);font-weight:600}
+/* ---------- past weeks (flip back) ---------- */
+.week-archive{margin-top:clamp(20px,1.8vw,32px)}
+.week-archive details{background:var(--surface);border:1px solid var(--line);border-radius:9px;margin-bottom:10px;box-shadow:var(--shadow)}
+.week-archive summary{cursor:pointer;padding:12px 16px;font-family:"Caveat",cursive;font-size:1.35em;color:var(--ink)}
+.week-archive summary:hover{background:var(--hover)}
+.week-archive .page{padding:4px 16px 14px;border-top:1px solid var(--line)}
 /* ---------- board grid ---------- */
 .board{display:grid;gap:clamp(16px,1.4vw,26px);grid-template-columns:1fr;align-items:start}
 @media(min-width:980px){.board{grid-template-columns:1fr 1fr}}
@@ -116,7 +138,7 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 <header>
   <div class="masthead">
     <h1>Nexus Ops Board</h1>
-    <div class="stamp">Refreshed Tue Aug 25, 2026 · 2:50 PM · by Claude</div>
+    <div class="stamp">Refreshed Tue Aug 25, 2026 · 4:10 PM · by Claude</div>
   </div>
   <div class="head-right">
     <div class="pulse">
@@ -129,6 +151,49 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
     <button id="theme-toggle" aria-label="Switch color theme">◐ Auto</button>
   </div>
 </header>
+
+<section class="week-glance">
+<h2>Week at a glance — Aug 24 – 30</h2>
+<div class="week-scroll"><div class="week-strip">
+  <div class="day past"><h3>Mon <b>24</b></h3><div class="hand">
+    <div class="did">Balk / MetLife alert sent</div>
+    <div class="did">Craig escalation — owned it</div>
+    <div class="did">6 term forms → Priority</div>
+    <div class="did">Agreements gated on Todd</div>
+    <div class="did">Edwards resubmitted overnight</div>
+  </div></div>
+  <div class="day today"><h3>Tue <b>25</b></h3><div class="hand">
+    <div class="did">Craig reply — sent &amp; landed</div>
+    <div class="did">Julie ×2 + 8-send day</div>
+    <div class="did">Cutting Edge settled — all Cam</div>
+    <div class="did">Benchmark call — really good</div>
+    <div class="did">MMA dental EN-feed confirmed!</div>
+    <div class="plan hot-note">Edwards confirm due EOD</div>
+  </div></div>
+  <div class="day"><h3>Wed <b>26</b></h3><div class="hand">
+    <div class="plan">Kevin / VTC — 10:00</div>
+    <div class="plan">MarJo Medicare planning — 11:00</div>
+    <div class="plan">Golf 4:45 ⛳</div>
+  </div></div>
+  <div class="day"><h3>Thu <b>27</b></h3><div class="hand">
+    <div class="plan hot-note">Todd — 3:30 (packet first!)</div>
+    <div class="plan">PH term-credits chase</div>
+    <div class="plan">CEHAS forms confirm</div>
+  </div></div>
+  <div class="day"><h3>Fri <b>28</b></h3><div class="hand">
+    <div class="plan">MarJo member mtg — 6 AM?</div>
+    <div class="plan">Sales Call — 10:00</div>
+    <div class="plan">Signatures start back</div>
+    <div class="plan">Date Night — 7:30 ❤</div>
+  </div></div>
+  <div class="day"><h3>Sat <b>29</b></h3><div class="hand">
+    <div class="plan">MMA + Unum chase day</div>
+  </div></div>
+  <div class="day"><h3>Sun <b>30</b></h3><div class="hand">
+    <div class="plan">Rest. Monday board flips fresh</div>
+  </div></div>
+</div></div>
+</section>
 
 <div class="board">
 
@@ -324,8 +389,20 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 </ul>
 </section>
 
+<section class="week-archive">
+<h2>Previous weeks — flip back</h2>
+<details><summary>Week of Aug 17 – 23 · the week Edwards got caught, agreements got finished, and the board went public</summary>
+<div class="page hand">
+  <div class="did">Mon–Tue: Penny/Sana fire worked to resolution · 8-send batch · marketplace answers</div>
+  <div class="did">Wed–Thu: Rob call locked the Integrity submission process · Notice of Sale form built · GR Motorcar + Permaloc → Integrity decided</div>
+  <div class="did">Fri: 8 sends verified · quarterback model formalized · Cam's forms confirmed at CEHAS</div>
+  <div class="did">Sat–Sun: MetLife/Adtegrity truth established · agreement stack completed (9 edits + Manning Section F) · board went public + 16:9 redesign · missed-items audit</div>
+</div>
+</details>
+</section>
+
 <footer>
-<b>How this board works:</b> Claude refreshes it every working session. The Claude copy saves your checkboxes and quick-adds instantly; this page also lives login-free at <b>jbearup1981.github.io/ops-board</b>. Calendar blocks own <i>when</i>; this board owns <i>status</i>. Theme button top-right: opens Light by default — switch to Dark or Auto (follows your device).
+<b>How this board works:</b> Planner model — the week-at-a-glance strip is the running record of the week (handwritten = the human story, cards below = the working detail). Done rows keep their strikethrough all week so progress stays visible. Every Monday the page flips: the strip + wins roll into "Previous weeks," unfinished items carry forward, same URL forever. Claude refreshes it every working session. The Claude copy saves your checkboxes and quick-adds instantly; this page also lives login-free at <b>jbearup1981.github.io/ops-board</b>. Calendar blocks own <i>when</i>; this board owns <i>status</i>. Theme button top-right: opens Light by default — switch to Dark or Auto (follows your device).
 </footer>
 </div>
 
