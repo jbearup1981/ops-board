@@ -59,12 +59,23 @@ header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap
 .day.past{background:color-mix(in srgb, var(--surface) 88%, var(--bg))}
 .day h3{margin:0 0 6px;font-size:.72em;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);font-weight:700}
 .day h3 b{color:var(--ink);font-size:1.15em;letter-spacing:.02em}
-.hand{font-family:"Caveat","Bradley Hand",cursive;font-size:1.22em;line-height:1.32;color:var(--ink)}
+:root{--pers:#4A6FA5;--pers-bg:#E8EEF6}
+:root[data-theme="dark"]{--pers:#8FB0DC;--pers-bg:#232B36}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pers:#8FB0DC;--pers-bg:#232B36}}
+.sched{margin:2px 0 6px}
+.sched div{display:flex;gap:7px;align-items:baseline;padding:1.5px 0;font-size:.93em}
+.sched .t{flex:none;width:3.4em;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent);font-size:.88em}
+.sched .pers .t, .sched.pers .t{color:var(--pers)}
+.sched .pers{color:var(--pers)}
+.sched .done{color:var(--muted)}
+.sched .done .t{color:var(--muted)}
+.sched .done::after{content:" ✓";color:var(--good);font-weight:700}
+.sched .cxl{color:var(--muted);text-decoration:line-through}
+.sched .cxl .t{color:var(--muted)}
+.hand{font-family:"Caveat","Bradley Hand",cursive;font-size:1.18em;line-height:1.3;color:var(--muted);border-top:1px dashed var(--line);padding-top:5px;margin-top:2px}
 .hand div{padding:1px 0}
-.hand .did{color:var(--muted)}
-.hand .did::before{content:"✓ ";color:var(--good);font-weight:700}
-.hand .plan::before{content:"• ";color:var(--accent)}
 .hand .hot-note{color:var(--fire);font-weight:600}
+.p-pers{background:var(--pers-bg);color:var(--pers)}
 /* ---------- past weeks (flip back) ---------- */
 .week-archive{margin-top:clamp(20px,1.8vw,32px)}
 .week-archive details{background:var(--surface);border:1px solid var(--line);border-radius:9px;margin-bottom:10px;box-shadow:var(--shadow)}
@@ -138,7 +149,7 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 <header>
   <div class="masthead">
     <h1>Nexus Ops Board</h1>
-    <div class="stamp">Refreshed Tue Aug 25, 2026 · 4:10 PM · by Claude</div>
+    <div class="stamp">Refreshed Tue Aug 25, 2026 · 4:25 PM · by Claude</div>
   </div>
   <div class="head-right">
     <div class="pulse">
@@ -155,43 +166,53 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 <section class="week-glance">
 <h2>Week at a glance — Aug 24 – 30</h2>
 <div class="week-scroll"><div class="week-strip">
-  <div class="day past"><h3>Mon <b>24</b></h3><div class="hand">
-    <div class="did">Balk / MetLife alert sent</div>
-    <div class="did">Craig escalation — owned it</div>
-    <div class="did">6 term forms → Priority</div>
-    <div class="did">Agreements gated on Todd</div>
-    <div class="did">Edwards resubmitted overnight</div>
-  </div></div>
-  <div class="day today"><h3>Tue <b>25</b></h3><div class="hand">
-    <div class="did">Craig reply — sent &amp; landed</div>
-    <div class="did">Julie ×2 + 8-send day</div>
-    <div class="did">Cutting Edge settled — all Cam</div>
-    <div class="did">Benchmark call — really good</div>
-    <div class="did">MMA dental EN-feed confirmed!</div>
-    <div class="plan hot-note">Edwards confirm due EOD</div>
-  </div></div>
-  <div class="day"><h3>Wed <b>26</b></h3><div class="hand">
-    <div class="plan">Kevin / VTC — 10:00</div>
-    <div class="plan">MarJo Medicare planning — 11:00</div>
-    <div class="plan">Golf 4:45 ⛳</div>
-  </div></div>
-  <div class="day"><h3>Thu <b>27</b></h3><div class="hand">
-    <div class="plan hot-note">Todd — 3:30 (packet first!)</div>
-    <div class="plan">PH term-credits chase</div>
-    <div class="plan">CEHAS forms confirm</div>
-  </div></div>
-  <div class="day"><h3>Fri <b>28</b></h3><div class="hand">
-    <div class="plan">MarJo member mtg — 6 AM?</div>
-    <div class="plan">Sales Call — 10:00</div>
-    <div class="plan">Signatures start back</div>
-    <div class="plan">Date Night — 7:30 ❤</div>
-  </div></div>
-  <div class="day"><h3>Sat <b>29</b></h3><div class="hand">
-    <div class="plan">MMA + Unum chase day</div>
-  </div></div>
-  <div class="day"><h3>Sun <b>30</b></h3><div class="hand">
-    <div class="plan">Rest. Monday board flips fresh</div>
-  </div></div>
+  <div class="day past"><h3>Mon <b>24</b></h3>
+    <div class="sched">
+      <div class="done"><span class="t">day</span><span>Inbox 50→20 · Balk alert out</span></div>
+      <div class="done"><span class="t">eve</span><span>Craig escalation worked</span></div>
+      <div class="done"><span class="t">nite</span><span>Edwards resubmitted to PH</span></div>
+    </div>
+    <div class="hand"><div>agreements gated on Todd — the careful call</div></div>
+  </div>
+  <div class="day today"><h3>Tue <b>25</b></h3>
+    <div class="sched">
+      <div class="done"><span class="t">12:00</span><span>NBS Weekly Hold</span></div>
+      <div class="done"><span class="t">1:30</span><span>Benchmark GA call</span></div>
+      <div class="cxl"><span class="t">2:00</span><span>Nick Gerke → Sept</span></div>
+      <div class="pers"><span class="t">3:30</span><span>Golf ⛳</span></div>
+    </div>
+    <div class="hand"><div>8-send day · Cutting Edge = Cam, settled · MMA feed!</div><div class="hot-note">Edwards confirm due EOD</div></div>
+  </div>
+  <div class="day"><h3>Wed <b>26</b></h3>
+    <div class="sched">
+      <div><span class="t">10:00</span><span>Kevin / VTC — next steps</span></div>
+      <div><span class="t">11:00</span><span>MarJo Medicare planning</span></div>
+      <div class="pers"><span class="t">4:45</span><span>Golf ⛳</span></div>
+    </div>
+    <div class="hand"><div>get his indemnity-product intel</div></div>
+  </div>
+  <div class="day"><h3>Thu <b>27</b></h3>
+    <div class="sched">
+      <div><span class="t">3:30</span><span>Todd — discovery docs</span></div>
+    </div>
+    <div class="hand"><div class="hot-note">packet to Todd BEFORE the meeting</div><div>PH term-credits chase · CEHAS confirm</div></div>
+  </div>
+  <div class="day"><h3>Fri <b>28</b></h3>
+    <div class="sched">
+      <div><span class="t">6:00a</span><span>MarJo member mtg (pending)</span></div>
+      <div><span class="t">10:00</span><span>Nexus Sales Call</span></div>
+      <div class="pers"><span class="t">7:30</span><span>Date Night ❤</span></div>
+    </div>
+    <div class="hand"><div>signatures start coming back</div></div>
+  </div>
+  <div class="day"><h3>Sat <b>29</b></h3>
+    <div class="sched"></div>
+    <div class="hand"><div>MMA + Unum verification chase</div></div>
+  </div>
+  <div class="day"><h3>Sun <b>30</b></h3>
+    <div class="sched"></div>
+    <div class="hand"><div>rest — Monday the page flips</div></div>
+  </div>
 </div></div>
 </section>
 
@@ -268,6 +289,8 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 
 <!-- ================= COLUMN 3: WATCHING ================= -->
 <div class="col">
+
+
 
 <section>
 <h2>Jason's adds — anything on your mind</h2>
