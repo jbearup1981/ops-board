@@ -63,7 +63,21 @@ header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap
 :root[data-theme="dark"]{--pers:#8FB0DC;--pers-bg:#232B36}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pers:#8FB0DC;--pers-bg:#232B36}}
 .sched{margin:2px 0 6px}
-.sched div{display:flex;gap:7px;align-items:baseline;padding:1.5px 0;font-size:.93em}
+.sched div{display:flex;gap:7px;align-items:baseline;padding:4px 0;font-size:.93em;border-bottom:1px solid var(--line)}
+.sched div:last-child{border-bottom:none}
+.goals{display:flex;gap:12px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:9px;
+  padding:10px 16px;margin-bottom:12px;box-shadow:var(--shadow);align-items:center}
+.goals .glabel{font-size:.72em;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:700;flex:none}
+.goals span.goal{font-family:"Caveat",cursive;font-size:1.3em;color:var(--ink);padding:0 6px;border-left:3px solid var(--line)}
+.goals span.goal b{color:var(--accent)}
+.money .row{padding:8px 15px}
+.money .amt{flex:none;font-weight:700;font-variant-numeric:tabular-nums;min-width:6.2em;text-align:right;color:var(--ink)}
+.age{flex:none;font-size:.72em;font-weight:700;color:var(--muted);background:var(--chip);border-radius:99px;padding:3px 8px;margin-top:3px}
+.age.stale{color:var(--fire);background:var(--fire-bg)}
+.pipe{display:flex;gap:10px;flex-wrap:wrap}
+.pipe .stat{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:9px 14px;box-shadow:var(--shadow)}
+.pipe .stat b{display:block;font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:1.5em;color:var(--ink)}
+.pipe .stat span{font-size:.75em;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
 .sched .t{flex:none;width:3.4em;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent);font-size:.88em}
 .sched .pers .t, .sched.pers .t{color:var(--pers)}
 .sched .pers{color:var(--pers)}
@@ -149,7 +163,7 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 <header>
   <div class="masthead">
     <h1>Nexus Ops Board</h1>
-    <div class="stamp">Refreshed Tue Aug 25, 2026 · 4:25 PM · by Claude</div>
+    <div class="stamp">Refreshed Tue Aug 25, 2026 · 4:50 PM · by Claude</div>
   </div>
   <div class="head-right">
     <div class="pulse">
@@ -158,13 +172,23 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
       <span><b>9</b> open items</span>
       <span><b>3</b> decisions</span>
       <span><b>3</b> waiting</span>
+      <span class="hot">Todd <b>2d</b></span>
+      <span>9/4 payroll <b>10d</b></span>
+      <span>Sept close <b>~11d</b></span>
     </div>
     <button id="theme-toggle" aria-label="Switch color theme">◐ Auto</button>
   </div>
 </header>
 
 <section class="week-glance">
-<h2>Week at a glance — Aug 24 – 30</h2>
+<h2>Week at a glance — Aug 24 – 30 <span style="letter-spacing:0;text-transform:none;font-weight:400;color:var(--muted)">· synced with Outlook</span></h2>
+<div class="goals">
+  <span class="glabel">This week's 3</span>
+  <span class="goal"><b>1</b> Commission module deployed (the Replit sitting)</span>
+  <span class="goal"><b>2</b> Agreements through Todd — signatures rolling by Friday</span>
+  <span class="goal"><b>3</b> MarJo Medicare — both meetings held</span>
+  <span style="font-size:.78em;color:var(--muted)">scored at Monday's flip · tell Claude to swap any</span>
+</div>
 <div class="week-scroll"><div class="week-strip">
   <div class="day past"><h3>Mon <b>24</b></h3>
     <div class="sched">
@@ -187,6 +211,7 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
     <div class="sched">
       <div><span class="t">10:00</span><span>Kevin / VTC — next steps</span></div>
       <div><span class="t">11:00</span><span>MarJo Medicare planning</span></div>
+      <div><span class="t">1:00</span><span>Pipeline Discussion</span></div>
       <div class="pers"><span class="t">4:45</span><span>Golf ⛳</span></div>
     </div>
     <div class="hand"><div>get his indemnity-product intel</div></div>
@@ -201,7 +226,8 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
     <div class="sched">
       <div><span class="t">6:00a</span><span>MarJo member mtg (pending)</span></div>
       <div><span class="t">10:00</span><span>Nexus Sales Call</span></div>
-      <div class="pers"><span class="t">7:30</span><span>Date Night ❤</span></div>
+      <div><span class="t">3:00</span><span>Monthly Review</span></div>
+      <div class="pers"><span class="t">7:30</span><span>Date Night ❤ (accept it!)</span></div>
     </div>
     <div class="hand"><div>signatures start coming back</div></div>
   </div>
@@ -230,6 +256,33 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
   <div class="row"><input type="checkbox" checked aria-label="done"><div class="what">✅ Kim Wiseley — was already SENT Fri 8/21 <small>Mitchell scope + apology went out with the Friday batch; verified in Sent Items</small></div><span class="pill p-good">sent</span></div>
   <div class="row"><input type="checkbox" checked aria-label="done"><div class="what">✅ Ken — SENT Tue 12:22 <small>Nothing needed from him · GR Motorcar in motion</small></div><span class="pill p-good">sent</span></div><div class="row"><input type="checkbox" checked aria-label="done"><div class="what">✅ Tuesday batch — Ashley reply-all · Joel (8/10 cancel confirm coming) · PH overpayment address · SBS Law (no $5K trust — pay-as-invoiced) · Julie Wed-11 confirm + Teams invite (Julie/Curt/Drew/Ken) <small>All verified in Sent Items 12:22–12:23 PM · member session: 6 PM tonight or 6 AM Wed/Fri, Drew to confirm</small></div><span class="pill p-good">sent</span></div>
 </div>
+</section>
+
+<section class="money">
+<h2>Money in motion</h2>
+<div class="card">
+  <div class="row"><div class="amt">$5,378/mo</div><div class="what">MarJo — PH overbilling credit demanded (+$1,846 Zagumny retro) <small>Reissue requested 8/25 · Marjo chat chases</small></div><span class="pill p-wait">inbound</span></div>
+  <div class="row"><div class="amt">retro</div><div class="what">Perceptive — 6 termination credits back to coverage-end dates <small>PH ack'd · chase Thu 8/28</small></div><span class="pill p-wait">inbound</span></div>
+  <div class="row"><div class="amt">−$100.77</div><div class="what">PH commission clawback — verifying vs the April statement before paying <small>Commissions chat owns the verdict</small></div><span class="pill p-wait">verify</span></div>
+  <div class="row"><div class="amt">−$682.50</div><div class="what">SBS Law invoice #3301 — pay before Thursday's Todd meeting <small>$5K trust DECLINED — pay-as-invoiced stands</small></div><span class="pill p-you">pay</span></div>
+  <div class="row"><div class="amt">−$200</div><div class="what">Ken — golf reimbursement (your half)</div><span class="pill p-you">pay</span></div>
+  <div class="row"><div class="amt">gate</div><div class="what">Sedera — ACH + W-9 needed early Sept or the payout delays</div><span class="pill p-wait">sept</span></div>
+  <div class="row"><div class="amt">±true-ups</div><div class="what">Corrected July statements — Cam up, Tom down (Cutting Edge) <small>Ride the Commissions chat's go-aheads list</small></div><span class="pill p-wait">pending</span></div>
+</div>
+</section>
+
+<section>
+<h2>Pipeline — live from the CRM</h2>
+<div class="pipe">
+  <div class="stat"><b>$7.58M</b><span>active pipeline</span></div>
+  <div class="stat"><b>136</b><span>active deals</span></div>
+  <div class="stat"><b>$1.05M</b><span>discovery · 20</span></div>
+  <div class="stat"><b>$762K</b><span>opportunity · 25</span></div>
+  <div class="stat"><b>$279K</b><span>solutions · 13</span></div>
+  <div class="stat"><b>43</b><span>customers</span></div>
+  <div class="stat"><b>183</b><span>hot + warm</span></div>
+</div>
+<div class="hint">Renewals lane coming — renewal dates aren't loaded in the CRM yet (part of the CRM chat's pipeline build). Once they are, next-90-days renewals show here automatically.</div>
 </section>
 
 <section>
@@ -328,13 +381,13 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 </section>
 
 <section>
-<h2>Waiting on others</h2>
+<h2>Plates in the air — nothing hits the floor</h2>
 <div class="card">
-  <div class="row"><div class="who">Julie / MarJo</div><div class="what">✅ Wed 11 AM planning LOCKED (Teams invite out: Julie, Curt, Drew, Ken) · member session proposed Fri 6:00 AM <small>Reconciliation landed well ("This is helpful — thank you") · waiting: her Friday-6AM confirm + in-person vs call</small></div><span class="pill p-wait">confirm</span></div>
+  <div class="row"><div class="who">Julie / MarJo</div><div class="what">✅ Wed 11 AM planning LOCKED (Teams invite out: Julie, Curt, Drew, Ken) · member session proposed Fri 6:00 AM <small>Reconciliation landed well ("This is helpful — thank you") · waiting: her Friday-6AM confirm + in-person vs call</small></div><span class="age">0d</span></div>
   <div class="row"><div class="who">Penny</div><div class="what">Her check-in → then restart the claims follow-through</div><span class="pill p-wait">waiting</span></div>
   <div class="row"><div class="who">CRM chat</div><div class="what">Renewal + new-business pipeline build <small>Spec handed off · target ~8/27 · sold-stage change kicks off paperwork</small></div><span class="pill p-wait">building</span></div>
-  <div class="row"><div class="who">Sadie</div><div class="what">Blank forms (Form 100/RFC) — promised on today's call <small>On arrival: GR Motorcar + Permaloc submissions go same-day</small></div><span class="pill p-wait">inbound</span></div>
-  <div class="row"><div class="who">PH</div><div class="what">Edwards URGENT completion — ack'd 10:14 AM, due EOD <small>5:45 auto-check runs · no confirm → call 616.464.8550 Wed AM</small></div><span class="pill p-wait">today</span></div>
+  <div class="row"><div class="who">Sadie</div><div class="what">Blank forms (Form 100/RFC) — promised on today's call <small>On arrival: GR Motorcar + Permaloc submissions go same-day</small></div><span class="age">0d</span></div>
+  <div class="row"><div class="who">PH</div><div class="what">Edwards URGENT completion — ack'd 10:14 AM, due EOD <small>5:45 auto-check runs · no confirm → call 616.464.8550 Wed AM</small></div><span class="age stale">EOD</span></div>
   <div class="row"><div class="who">Sena</div><div class="what">BCN past-due notice (cancels 9/1) — Jason chose NOT to intervene <small>Notice filed · revisit only if it resurfaces</small></div><span class="pill p-wait">watching</span></div>
   <div class="row"><div class="who">Kevin / VTC</div><div class="what">"Next steps" call — moved to Wed 8/26 10:00, ACCEPTED <small>Producer, very interested in joining · get competitive intel on his indemnity product · do NOT name him externally until he resigns</small></div><span class="pill p-wait">wed 10</span></div>
 </div>
