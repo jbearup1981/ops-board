@@ -53,6 +53,16 @@ header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap
 header{position:sticky;top:0;z-index:60;background:var(--bg)}
 .pipe-top{margin-bottom:14px}
 .pipe-top .hint{margin-top:6px}
+/* ---------- next 24 hours + progress ---------- */
+.focus{border:2px solid var(--fire);border-radius:9px;background:var(--surface);box-shadow:var(--shadow);margin-bottom:14px}
+.focus h2{padding:10px 16px 0;margin:0}
+.focus h2::after{display:none}
+.focus .row{padding:8px 15px}
+.meter{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.meter .bar{flex:1;height:9px;background:var(--chip);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.meter .fill{height:100%;background:var(--good);border-radius:99px}
+.meter b{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:1.15em;white-space:nowrap}
+.meter span{color:var(--muted);font-size:.82em;white-space:nowrap}
 /* ---------- week at a glance (planner) ---------- */
 .week-glance{margin-bottom:clamp(18px,1.6vw,28px)}
 .week-scroll{overflow-x:auto;padding-bottom:4px}
@@ -167,7 +177,7 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 <header>
   <div class="masthead">
     <h1>Nexus Ops Board</h1>
-    <div class="stamp">Refreshed Tue Aug 25, 2026 · 5:10 PM · by Claude</div>
+    <div class="stamp">Refreshed Wed Aug 26, 2026 · early AM · by Claude</div>
   </div>
   <div class="head-right">
     <div class="pulse">
@@ -193,6 +203,7 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
   <span class="goal"><b>3</b> MarJo Medicare — both meetings held</span>
   <span style="font-size:.78em;color:var(--muted)">scored at Monday's flip · tell Claude to swap any</span>
 </div>
+<div class="meter"><b>21 / 33</b><div class="bar"><div class="fill" style="width:64%"></div></div><span>week items done · fills as the strikeouts pile up</span></div>
 <div class="pipe-top">
 <h2>Pipeline — live from the CRM</h2>
 <div class="pipe">
@@ -215,16 +226,16 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
     </div>
     <div class="hand"><div>agreements gated on Todd — the careful call</div></div>
   </div>
-  <div class="day today"><h3>Tue <b>25</b></h3>
+  <div class="day past"><h3>Tue <b>25</b></h3>
     <div class="sched">
       <div class="done"><span class="t">12:00</span><span>NBS Weekly Hold</span></div>
       <div class="done"><span class="t">1:30</span><span>Benchmark GA call</span></div>
       <div class="cxl"><span class="t">2:00</span><span>Nick Gerke → Sept</span></div>
-      <div class="pers"><span class="t">3:30</span><span>Golf ⛳</span></div>
+      <div class="done pers"><span class="t">3:30</span><span>Golf ⛳</span></div>
     </div>
-    <div class="hand"><div>8-send day · Cutting Edge = Cam, settled · MMA feed!</div><div class="hot-note">Edwards confirm due EOD</div></div>
+    <div class="hand"><div>8-send day · Cutting Edge = Cam · MMA feed! · Benchmark ✓</div></div>
   </div>
-  <div class="day"><h3>Wed <b>26</b></h3>
+  <div class="day today"><h3>Wed <b>26</b></h3>
     <div class="sched">
       <div><span class="t">10:00</span><span>Kevin / VTC — next steps</span></div>
       <div><span class="t">11:00</span><span>MarJo Medicare planning</span></div>
@@ -263,6 +274,17 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 
 <!-- ================= COLUMN 1: ACT NOW ================= -->
 <div class="col">
+
+<section class="focus">
+<h2>🔥 Next 24 hours</h2>
+<div class="card" style="border:none;box-shadow:none">
+  <div class="row hot"><div class="what"><b>Edwards — PH blew the same-day SLA.</b> Second URGENT chase sent this morning; <b>call 616.464.8550</b> when lines open <small>Auto-promoted from Plates in the air · written completion confirm closes it</small></div><span class="pill p-fire">call</span></div>
+  <div class="row"><div class="time">10:00</div><div class="what">Kevin / VTC — next steps <small>His book, his indemnity product (get the name), his timeline · don't name him externally</small></div><span class="pill p-you">meet</span></div>
+  <div class="row"><div class="time">11:00</div><div class="what">MarJo Medicare planning — Julie, Curt, Drew, Ken <small>Agenda in the invite · member session Fri 6 AM still awaiting Julie's confirm</small></div><span class="pill p-you">meet</span></div>
+  <div class="row"><div class="time">1:00</div><div class="what">Pipeline Discussion + next steps</div><span class="pill p-you">meet</span></div>
+  <div class="row"><div class="what"><b>Todd packet</b> — send the attorney review packet TODAY so Thursday 3:30 is productive <small>Say the word and Claude drafts the cover + attaches</small></div><span class="pill p-fire">send</span></div>
+</div>
+</section>
 
 <section>
 <h2>Send queue — check off when sent</h2>
@@ -390,7 +412,7 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
   <div class="row"><div class="who">Penny</div><div class="what">Her check-in → then restart the claims follow-through</div><span class="pill p-wait">waiting</span></div>
   <div class="row"><div class="who">CRM chat</div><div class="what">Renewal + new-business pipeline build <small>Spec handed off · target ~8/27 · sold-stage change kicks off paperwork</small></div><span class="pill p-wait">building</span></div>
   <div class="row"><div class="who">Sadie</div><div class="what">Blank forms (Form 100/RFC) — promised on today's call <small>On arrival: GR Motorcar + Permaloc submissions go same-day</small></div><span class="age">0d</span></div>
-  <div class="row"><div class="who">PH</div><div class="what">Edwards URGENT completion — ack'd 10:14 AM, due EOD <small>5:45 auto-check runs · no confirm → call 616.464.8550 Wed AM</small></div><span class="age stale">EOD</span></div>
+  <div class="row"><div class="who">PH</div><div class="what">Edwards URGENT completion — SLA MISSED, promoted to Next 24 hours <small>2nd URGENT chase sent Wed AM · call 616.464.8550 · written confirm closes the ledger row</small></div><span class="age stale">1d+</span></div>
   <div class="row"><div class="who">Sena</div><div class="what">BCN past-due notice (cancels 9/1) — Jason chose NOT to intervene <small>Notice filed · revisit only if it resurfaces</small></div><span class="pill p-wait">watching</span></div>
   <div class="row"><div class="who">Kevin / VTC</div><div class="what">"Next steps" call — moved to Wed 8/26 10:00, ACCEPTED <small>Producer, very interested in joining · get competitive intel on his indemnity product · do NOT name him externally until he resigns</small></div><span class="pill p-wait">wed 10</span></div>
 </div>
@@ -434,6 +456,7 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 <section class="wins-band">
 <h2>Closed this week</h2>
 <ul class="wins">
+  <li>Augusta OE — iSolved processed ALL approvals (Brandi confirmed, fully closed)</li>
   <li>Craig comprehensive reply — SENT Tue 8:32, Ashley engaged constructively</li>
   <li>Julie reconciliation delivered ("This is helpful — thank you!") + Medicare mtgs moving</li>
   <li>Cutting Edge settled forever — all Cam, Tom confirmed, CRM fixed</li>
