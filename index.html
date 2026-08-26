@@ -82,8 +82,9 @@ header{position:sticky;top:0;z-index:60;background:var(--bg)}
 .goals{display:flex;gap:12px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:9px;
   padding:10px 16px;margin-bottom:12px;box-shadow:var(--shadow);align-items:center}
 .goals .glabel{font-size:.72em;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:700;flex:none}
-.goals span.goal{font-family:"Caveat",cursive;font-size:1.3em;color:var(--ink);padding:0 6px;border-left:3px solid var(--line)}
-.goals span.goal b{color:var(--accent)}
+.goals span.goal{font-size:.95em;font-weight:600;color:var(--ink);padding:2px 6px;display:inline-flex;align-items:center;gap:8px}
+.goals span.goal b{flex:none;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:.82em;font-weight:700}
 .money .row{padding:8px 15px}
 .money .amt{flex:none;font-weight:700;font-variant-numeric:tabular-nums;min-width:6.2em;text-align:right;color:var(--ink)}
 .age{flex:none;font-size:.72em;font-weight:700;color:var(--muted);background:var(--chip);border-radius:99px;padding:3px 8px;margin-top:3px}
@@ -177,7 +178,7 @@ footer{margin-top:30px;color:var(--muted);font-size:.8em;border-top:1px solid va
 <header>
   <div class="masthead">
     <h1>Nexus Ops Board</h1>
-    <div class="stamp">Refreshed Wed Aug 26, 2026 · early AM · by Claude</div>
+    <div class="stamp">Refreshed Wed Aug 26, 2026 · AM · by Claude</div>
   </div>
   <div class="head-right">
     <div class="pulse">
